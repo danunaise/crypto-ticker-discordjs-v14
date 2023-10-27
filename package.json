@@ -1,0 +1,16 @@
+{
+  "name": "cryptoticker",
+  "version": "0.0.1",
+  "description": "cryptoticker discordjs ",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zusture",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "discord.js": "^14.13.0"
+  }
+}
