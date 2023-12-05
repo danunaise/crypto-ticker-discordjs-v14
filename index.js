@@ -1,12 +1,15 @@
-import { Client, Events,ActivityType, GatewayIntentBits } from 'discord.js';
+import { Client, Events, ActivityType, GatewayIntentBits } from 'discord.js';
 import axios from 'axios';
+
+const currency = 'usd'; // or 'eur', 'rub', etc.
+const crypto = 'bitcoin';
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.once(Events.ClientReady, c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
 
-  axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin')
+  axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${crypto}`)
     .then(response => {
       console.log(response.data);
       const data = response.data[0];
@@ -30,11 +33,11 @@ client.once(Events.ClientReady, c => {
         client.user.setActivity(status, { type: ActivityType.Watching });
         index++;
       }, 5 * 1000); // 5 seconds
-
     }).catch(error => {
       console.error(error);
     })
+
 });
 
 // Log in to Discord with your client's token
-client.login("youtokenhere");
+client.login("YOUR_TOKEN_HERE");
